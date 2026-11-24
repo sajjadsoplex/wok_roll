@@ -17,7 +17,7 @@ class FloatingDecorations extends StatelessWidget {
             top: constraints.maxHeight * e.$2,
             child: Text(e.$3, style: TextStyle(
               fontSize: e.$4,
-              color: const Color(0xFFE98AB1).withValues(alpha: .45),
+              color: const Color(0x73E98AB1),
               fontWeight: FontWeight.w900,
             )),
           )).toList(),

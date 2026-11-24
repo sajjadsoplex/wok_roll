@@ -44,7 +44,7 @@ class _StoryButtonState extends State<StoryButton>
               borderRadius: BorderRadius.circular(999),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFE83E83).withValues(alpha: glow),
+                  color: const Color(0x73F8E3E8),
                   blurRadius: 14 + _pulse.value * 12,
                   spreadRadius: 1 + _pulse.value * 3,
                 ),
