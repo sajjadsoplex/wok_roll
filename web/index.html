@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <meta name="description"
+    content="Join the Wok & Roll Chowmein Corner adventure this Culture Day!">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#FCE4EF">
+
+  <title>Wok & Roll | Chowmein Corner</title>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #FCE4EF;
+    }
+
+    #wok-loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      background: #FCE4EF;
+      color: #A52D63;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      transition: opacity 0.3s ease;
+    }
+
+    #wok-loading-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .wok-loader-content {
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .wok-paw {
+      font-size: 38px;
+      animation: wokBounce 0.6s infinite alternate;
+    }
+
+    @keyframes wokBounce {
+      to {
+        transform: translateY(-8px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="wok-loading-screen">
+    <div class="wok-loader-content">
+      <div class="wok-paw">🐾</div>
+      Warming up the noodles...
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const wokLoadingElement =
+        document.getElementById('wok-loading-screen');
+
+      let wokLoadingHidden = false;
+
+      function hideWokLoadingScreen() {
+        if (wokLoadingHidden) return;
+
+        wokLoadingHidden = true;
+
+        if (!wokLoadingElement) return;
+
+        wokLoadingElement.classList.add('hide');
+
+        setTimeout(() => {
+          wokLoadingElement.remove();
+        }, 350);
+      }
+
+      // Hide when Flutter renders its first frame.
+      window.addEventListener(
+        'flutter-first-frame',
+        hideWokLoadingScreen
+      );
+
+      // Maximum loading-overlay display: 2 seconds.
+      setTimeout(
+        hideWokLoadingScreen,
+        2000
+      );
+    })();
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+
+</body>
+</html>
